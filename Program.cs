@@ -7,6 +7,16 @@ using System.Threading.Tasks;
 
 namespace RegExp {
 	class Program {
+
+		private static readonly string StartMessage = 
+@"Welcome to RegEx Console
+Aviable commands:
+:stop - stops current regex testing
+:clear - clear console
+";
+
+
+
 		static void Main(string[] args) {
 			while(true) {
 				string pattern;
@@ -25,6 +35,7 @@ namespace RegExp {
 						break;
 					}else if(line.ToLower().Equals(":clear")) {
 						Console.Clear();
+						continue;
 					}
 
 					bool match = r.IsMatch(line);
