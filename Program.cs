@@ -6,7 +6,8 @@ namespace RegExp {
 	class Program {
 
 		private static readonly string StartMessage =
-@" Welcome to RegEx Console
+@"
+ Welcome to RegEx Console (v1.0)
  Aviable commands:
  :regex <pattern> - set current regex pattern
  :reset - reset current regex pattern
@@ -53,31 +54,6 @@ namespace RegExp {
 						WriteColoredLine(match ? " Yes!" : " No!", match ? ConsoleColor.Green : ConsoleColor.Red);
 					}
 				}
-
-
-
-				/*
-
-				Console.Write("Enter Regex pattern: ");
-				pattern = Console.ReadLine();
-				Console.WriteLine();
-
-				Regex r = new Regex(pattern);
-
-				while(true) {
-					Console.Write("Enter string: ");
-					string line = Console.ReadLine();
-					if(line.ToLower().Equals(":stop")) {
-						Console.WriteLine();
-						break;
-					} else if(line.ToLower().Equals(":clear")) {
-						Console.Clear();
-						continue;
-					}
-
-					bool match = r.IsMatch(line);
-					Console.WriteLine(match);
-				}*/
 			}			
 		}
 
