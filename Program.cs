@@ -16,7 +16,7 @@ namespace RegExp {
 
 
 		static void Main(string[] args) {
-			Regex pattern;
+			Regex pattern = null;
 
 			WriteLine(StartMessage);
 
@@ -32,13 +32,25 @@ namespace RegExp {
 								break;
 							}
 							pattern = new Regex(command[1]);
-							WriteColoredLine(" Pattern changed!", ConsoleColor.Green);
+							WriteColored(" Pattern changed! Current pattern:          ", ConsoleColor.Green);
+							WriteColored(command[1], ConsoleColor.DarkYellow);
+							WriteLine();
 							break;
 
 						case "reset":
 							pattern = null;
 							WriteColoredLine(" Pattern removed!", ConsoleColor.Green);
 							break;
+
+						case "clear":
+							Clear();
+							WriteLine(StartMessage);
+							break;
+					}
+				} else {
+					if(pattern != null) {
+						bool match = pattern.IsMatch(line);
+						WriteColoredLine(match ? " Yes!" : " No!", match ? ConsoleColor.Green : ConsoleColor.Red);
 					}
 				}
 
@@ -76,6 +88,13 @@ namespace RegExp {
 			Console.WriteLine(text);
 			ForegroundColor = old;
 		}
-		
+
+		public static void WriteColored(String text, ConsoleColor color) {
+			ConsoleColor old = ForegroundColor;
+			ForegroundColor = color;
+			Console.Write(text);
+			ForegroundColor = old;
+		}
+
 	}
 }
